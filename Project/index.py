@@ -97,7 +97,6 @@ avg_flights = round(flightn/carsowners,5)
 print ('\nСреднее количество перелетов на владельцев машин', avg_flights)
 
 #Point 6
-list_fl = []
 print(len(users))
 for user in users:
     friends = user.get('friends')
@@ -111,15 +110,13 @@ for user in users:
             i+=1
             while found and j<len(flights):
                 fl = flights[j]
-                for cntry in countries:
-                    if fl.get('country')==cntry:
-                        found = False
-                        found_fr = False
-                        users.remove(user)
-                        break
+                if fl.get('country') in countries:
+                    found = False
+                    found_fr = False
+                    users.remove(user)
+                    #print ('Break', cntry)
                 j+=1
     except:
         pass
-
 print(len(users))
 
