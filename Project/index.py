@@ -86,12 +86,13 @@ for user in users:
                 carsowners+=1
             except:
                 pass
-            try:
-                flightsn = friend['flights']
-                for f in flightsn:
-                    flightn+=1
-            except:
-                pass
+            else:
+                try:
+                    flightsn = friend['flights']
+                    for f in flightsn:
+                        flightn+=1
+                except:
+                    pass
 avg_flights = round(flightn/carsowners,5)
 print ('\nСреднее количество перелетов на владельцев машин', avg_flights)
 
