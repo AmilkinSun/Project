@@ -87,8 +87,9 @@ for user in users:
             except:
                 pass
             try:
-                cars = friend['flights']
-                flightn+=1
+                flightsn = friend['flights']
+                for f in flightsn:
+                    flightn+=1
             except:
                 pass
 avg_flights = round(flightn/carsowners,5)
