@@ -1,7 +1,6 @@
 from ast import Pass
 from dataset import users, countries
 import pprint
-
 #Point 1
 users_wrong_password = []
 #pprint.pprint(users)
@@ -44,18 +43,36 @@ for user in users:
     except:
         pass
     else:
+        all_friends = {}
         for friend in user['friends']:
             try:
                 job = friend['job']
                 if best < job['salary']:
                     best = job['salary']
                     best_occupation = {'occupation':job['occupation'], 'salary':job['salary']} 
-                    vip_user = friend['name']
+                    
             except:
                 pass
+
 print('\nЛучшая зарплата:',best_occupation)
 #Point 4
-print('\nVIP:', vip_user)
+max = 0
+vip_user = ''
+for user in users:
+    try:
+        sum = 0
+        for fr in user['friends']:
+            print(fr)
+            j = fr.get('job')
+            sum += j.get('salary')
+            print(fr)
+        if max < sum:
+            max = sum
+            vip_user = user['name']
+    except:
+        pass
+
+print ('VIP', vip_user)
 #Point 5
 carsowners = 0
 flightn = 0
