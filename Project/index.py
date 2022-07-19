@@ -62,10 +62,8 @@ for user in users:
     try:
         sum = 0
         for fr in user['friends']:
-            print(fr)
             j = fr.get('job')
             sum += j.get('salary')
-            print(fr)
         if max < sum:
             max = sum
             vip_user = user['name']
@@ -88,12 +86,11 @@ for user in users:
                 carsowners+=1
             except:
                 pass
-            else:
-                try:
-                    cars = friend['flights']
-                    flightn+=1
-                except:
-                    pass
+            try:
+                cars = friend['flights']
+                flightn+=1
+            except:
+                pass
 avg_flights = round(flightn/carsowners,5)
 print ('\nСреднее количество перелетов на владельцев машин', avg_flights)
 
