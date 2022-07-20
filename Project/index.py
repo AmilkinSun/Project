@@ -100,10 +100,9 @@ print ('\nСреднее количество перелетов на владе
 print(len(users))
 for user in users:
     friends = user.get('friends')
-    found_fr = True
+    found = True
     i=0
-    while friends!= None and i<len(friends) and found_fr:
-        found = True
+    while friends!= None and i<len(friends) and found:
         flights = friends[i].get('flights')
         j=0
         i+=1
@@ -115,5 +114,6 @@ for user in users:
                 users.remove(user)
                 #print ('Break', cntry)
                 j+=1
+users_copy = users
 print(len(users))
 
