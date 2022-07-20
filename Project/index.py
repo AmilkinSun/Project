@@ -97,23 +97,43 @@ avg_flights = round(flightn/carsowners,5)
 print ('\nСреднее количество перелетов на владельцев машин', avg_flights)
 
 #Point 6
-print(len(users))
-for user in users:
-    friends = user.get('friends')
-    found = True
-    i=0
-    while friends!= None and i<len(friends) and found:
-        flights = friends[i].get('flights')
-        j=0
-        i+=1
-        while flights!=None and found and j<len(flights):
-            fl = flights[j]
-            if fl.get('country') in countries:
-                found = False
-                #print ('Break', cntry)
-                j+=1
-    if found == False:
-        users.remove(user)
-users_copy = users
-print(len(users))
+users_copy = users.copy()
+#print(len(users))
+#for user in users:
+#    friends = user.get('friends')
+#    found = True
+#    i=0
+#    while friends!= None and i<len(friends) and found:
+#        flights = friends[i].get('flights')
+#        j=0
+#        i+=1
+#        while flights!=None and found and j<len(flights):
+#            fl = flights[j]
+#            if fl.get('country') in countries:
+#                found = False
+#                j+=1
+#    if found == False:
+#        users.remove(user)
+
+#print(len(users))
+
+i = 0
+while i < len(users):
+    need_remove = False
+    friends = users[i].get('friends', [])
+    j=0
+    while need_remove == False and j<len(friends):
+        friend = friends[j]
+        j+=1
+        flights = friend.get('flights', [])
+        k=0
+        while need_remove == False and k<len(flights):
+            flight = flights[k]
+            k+=1
+            if flight['country'] in countries:
+                need_remove = True
+    if need_remove:
+        del users[i]
+    else:
+        i += 1
 
