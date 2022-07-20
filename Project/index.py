@@ -110,10 +110,10 @@ for user in users:
             fl = flights[j]
             if fl.get('country') in countries:
                 found = False
-                found_fr = False
-                users.remove(user)
                 #print ('Break', cntry)
                 j+=1
+    if found == False:
+        users.remove(user)
 users_copy = users
 print(len(users))
 
