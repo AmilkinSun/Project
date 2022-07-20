@@ -102,21 +102,18 @@ for user in users:
     friends = user.get('friends')
     found_fr = True
     i=0
-    try:
-        while i<len(friends) and found_fr:
-            found = True
-            flights = friends[i].get('flights')
-            j=0
-            i+=1
-            while found and j<len(flights):
-                fl = flights[j]
-                if fl.get('country') in countries:
-                    found = False
-                    found_fr = False
-                    users.remove(user)
-                    #print ('Break', cntry)
+    while friends!= None and i<len(friends) and found_fr:
+        found = True
+        flights = friends[i].get('flights')
+        j=0
+        i+=1
+        while flights!=None and found and j<len(flights):
+            fl = flights[j]
+            if fl.get('country') in countries:
+                found = False
+                found_fr = False
+                users.remove(user)
+                #print ('Break', cntry)
                 j+=1
-    except:
-        pass
 print(len(users))
 
